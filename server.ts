@@ -5,7 +5,7 @@ app.get('/hello', (req, res) =>
     res.send('Hello World!'));
 
 app.get('/add/:a/:b', (req, res) => {
-    res.send(req.params.a + req.params.b)
+    res.send(req.params.a + req.params.b);
 })
 
 const PORT = 4000;

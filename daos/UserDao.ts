@@ -3,19 +3,27 @@ import UserModel from '../mongoose/UserModel';
 import UserDaoI from '../interfaces/UserDao';
 
 export default class UserDao implements UserDaoI {
-    async findAllUsers(): Promise<User[]> {
-        return await UserModel.find()
+    private static userDao: UserDao | null = null;
+    public static getInstance = (): UserDao => {
+        if (UserDao.userDao === null) {
+            UserDao.userDao = new UserDao();
+        }
+        return UserDao.userDao;
     }
-    async findByUserId(uid: string): Promise<User> {
-        return await UserModel.findById(uid);
+    private constructor() {}
+    async findAllUsers(): Promise<User[]> {
+        return UserModel.find();
+    }
+    async findUserById(uid: string): Promise<any> {
+        return UserModel.findById(uid);
     }
     async createUser(user: User): Promise<User> {
         return await UserModel.create(user);
     }
     async deleteUser(uid: string): Promise<any> {
-        return await UserModel.deleteOne({_id: uid});
+        return UserModel.deleteOne({_id: uid});
     }
     async updateUser(uid: string, user: User): Promise<any> {
-        return await UserModel.updateOne({_id: userId}, {$set: user});
+        return UserModel.updateOne({_id: uid}, {$set: user});
     }
 }

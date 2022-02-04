@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.ts",
-    "start:dev": "nodemon server.ts",
+    "start": "nodemon server.ts",
     "build": "tsc --project ./",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "npm run build"

@@ -12,7 +12,8 @@ app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
 })
 
-mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+// mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+mongoose.connect("mongodb://localhost:27017/cs5500");
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const PORT = 4000;

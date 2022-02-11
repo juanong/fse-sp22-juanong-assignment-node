@@ -1,5 +1,5 @@
-import User from '../models/User';
-import UserModel from '../mongoose/UserModel';
+import User from '../models/users/User';
+import UserModel from '../mongoose/users/UserModel';
 import UserDaoI from '../interfaces/UserDaoI';
 
 export default class UserDao implements UserDaoI {
@@ -25,5 +25,8 @@ export default class UserDao implements UserDaoI {
     }
     async updateUser(uid: string, user: User): Promise<any> {
         return UserModel.updateOne({_id: uid}, {$set: user});
+    }
+    async deleteAllUsers() : Promise<any> {
+        return UserModel.deleteMany({});
     }
 }

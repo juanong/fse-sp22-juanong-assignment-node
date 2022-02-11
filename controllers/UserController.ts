@@ -1,7 +1,6 @@
 import {Request, Response, Express} from "express";
 import UserDao from "../daos/UserDao";
 import UserControllerI from "../interfaces/UserControllerI";
-import User from "../models/users/User";
 
 export default class UserController implements UserControllerI {
    private static userDao: UserDao = UserDao.getInstance();
@@ -31,10 +30,7 @@ export default class UserController implements UserControllerI {
    deleteUser = (req: Request, res: Response) =>
        UserController.userDao.deleteUser(req.params.userid)
            .then(status => res.json(status));
-   deleteAllUsers = (req: Request, res: Response) =>
-       UserController.userDao.deleteAllUsers()
-           .then(status => res.json(status));
-    updateUser = (req: Request, res: Response) =>
+   updateUser = (req: Request, res: Response) =>
        UserController.userDao.updateUser(req.params.userid, req.body)
            .then(status => res.json(status));
 }

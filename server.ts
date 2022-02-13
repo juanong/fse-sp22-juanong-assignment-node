@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import UserController from "./controllers/UserController";
 import TuitController from "./controllers/TuitController";
 import LikeController from "./controllers/LikeController";
+import BookmarkController from "./controllers/BookmarkController";
 import mongoose from 'mongoose';
 const app = express();
 app.use(bodyParser.json());
@@ -17,5 +18,6 @@ mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mong
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);
+const bookmarkController = BookmarkController.getInstance(app);
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);

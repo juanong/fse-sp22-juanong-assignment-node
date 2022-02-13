@@ -1,5 +1,5 @@
-import Tuit from '../models/Tuit';
-import TuitModel from '../mongoose/TuitModel';
+import Tuit from '../models/tuits/Tuit';
+import TuitModel from '../mongoose/tuits/TuitModel';
 import TuitDaoI from '../interfaces/TuitDaoI';
 
 export default class TuitDao implements TuitDaoI {
@@ -14,14 +14,14 @@ export default class TuitDao implements TuitDaoI {
     async findAllTuits(): Promise<Tuit[]> {
         return TuitModel.find();
     }
-    async findTuitsByUser(uid: string): Promise<Tuit[]> {
+    async findAllTuitsByUser(uid: string): Promise<Tuit[]> {
         return TuitModel.find({postedBy: uid});
     }
     async findTuitById(tid: string): Promise<any> {
         return TuitModel.findById(tid);
     }
-    async createTuit(tuit: Tuit): Promise<Tuit> {
-        return await TuitModel.create(tuit);
+    async createTuitByUser(uid: string, tuit: Tuit): Promise<Tuit> {
+        return await TuitModel.create({...tuit, postedBy: uid});
     }
     async deleteTuit(tid: string): Promise<any> {
         return TuitModel.deleteOne({_id: tid});

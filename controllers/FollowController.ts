@@ -8,11 +8,10 @@ export default class FollowController implements FollowControllerI {
     public static getInstance = (app: Express): FollowController => {
         if (FollowController.followController == null) {
             FollowController.followController = new FollowController();
-            // set paths
             app.get('/users/:uid/followers', FollowController.followController.findAllFollowersOfUser);
             app.get('/users/:uid/following', FollowController.followController.findAllUsersThatUserFollows);
-            app.post('/users/:followingUserId/follows/:followedUserId', FollowController.followController.userFollowsUser);
-            app.delete('/users/:followingUserId/unfollows/:unfollowedUserId', FollowController.followController.userUnfollowsUser);
+            app.post('/users/:uid/follows/:followedUserId', FollowController.followController.userFollowsUser);
+            app.delete('/users/:uid/unfollows/:unfollowedUserId', FollowController.followController.userUnfollowsUser);
             app.delete('/follows/:followId', FollowController.followController.deleteFollow);
         }
         return FollowController.followController;
@@ -28,11 +27,11 @@ export default class FollowController implements FollowControllerI {
             .then(follows => res.json(follows));
 
     userFollowsUser = (req: Request, res: Response) =>
-        FollowController.followDao.userFollowsUser(req.params.followingUserId, req.params.followedUserId)
+        FollowController.followDao.userFollowsUser(req.params.uid, req.params.followedUserId)
             .then(follow => res.json(follow));
 
     userUnfollowsUser(req: Request, res: Response) {
-        FollowController.followDao.userUnfollowsUser(req.params.followingUserId, req.params.unfollowedUserId)
+        FollowController.followDao.userUnfollowsUser(req.params.uid, req.params.unfollowedUserId)
             .then(status => res.send(status));
     }
     deleteFollow(req: Request, res: Response) {

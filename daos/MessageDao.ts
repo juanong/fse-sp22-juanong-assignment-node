@@ -24,8 +24,8 @@ export default class MessageDao implements MessageDaoI {
     async findAllMessagesUserReceivedFromUser(senderUid: string, receiverUid: string): Promise<Message[]> {
         return MessageModel.find({toUser: receiverUid, fromUser: senderUid});
     }
-    async userSendsMessage(senderUid: string, receiverUid: string, message: string): Promise<any> {
-        return MessageModel.create({toUser: receiverUid, fromUser: senderUid, message});
+    async userSendsMessage(senderUid: string, receiverUid: string, message: Message): Promise<any> {
+        return MessageModel.create({ ...message, toUser: receiverUid, fromUser: senderUid});
     }
     async userDeletesMessage(mid: string): Promise<any> {
         return MessageModel.deleteOne({_id: mid});

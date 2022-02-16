@@ -1,3 +1,6 @@
+/**
+ * @file Defines abstracted methods to access Bookmark data
+ */
 import {Request, Response} from "express";
 
 export default interface BookmarkControllerI {

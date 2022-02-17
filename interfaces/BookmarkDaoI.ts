@@ -1,3 +1,6 @@
+/**
+ * @file Defines all functionality for Bookmark data access objects
+ */
 import Bookmark from "../models/bookmarks/Bookmark";
 
 /**

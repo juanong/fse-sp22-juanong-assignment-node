@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: daos/LikeDao.js</title>
+    <title>JSDoc: Source: daos/TuitDao.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: daos/LikeDao.js</h1>
+    <h1 class="page-title">Source: daos/TuitDao.js</h1>
 
     
 
@@ -40,48 +40,80 @@ var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
     return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const LikeModel_1 = __importDefault(require("../mongoose/likes/LikeModel"));
+const TuitModel_1 = __importDefault(require("../mongoose/tuits/TuitModel"));
 /**
- * @class BookmarkDao implements a data access object that manages all bookmark data
- * @property {BookmarkDao} bookmarkDao is a private instance of Bookmark DAO using the singleton pattern
+ * @class TuitDao implements a data access object that manages all tuit data
+ * @property {TuitDao} tuitDao is a private instance of Tuit DAO using the singleton pattern
  */
-class LikeDao {
-    constructor() {
-        /**
-         * Calls on LikeModel to retrieve all users that like a tuit
-         * @param tid {string} tuit primary key
-         */
-        this.findAllUsersThatLikedTuit = (tid) => LikeModel_1.default.find({ tuit: tid }).populate("likedBy").exec();
-        /**
-         * Calls on LikeModel to retrieve all tuits that have been liked by a user
-         * @param uid {string} user primary key
-         */
-        this.findAllTuitsLikedByUser = (uid) => LikeModel_1.default.find({ likedBy: uid }).populate("tuit").exec();
-        /**
-         * Calls on LikeModel to create a new Like instance
-         * @param tid {string} primary key of tuit being liked
-         * @param uid {string} primary key of user liking the tuit
-         */
-        this.userLikesTuit = (tid, uid) => LikeModel_1.default.create({ tuit: tid, likedBy: uid });
-        /**
-         * Calls on LikeModel to delete a Like instance
-         * @param tid {string} primary key of tuit being unliked
-         * @param uid {string} primary key of user unliking the tuit
-         */
-        this.userUnlikesTuit = (tid, uid) => __awaiter(this, void 0, void 0, function* () { return LikeModel_1.default.deleteOne({ tuit: tid, likedBy: uid }); });
+class TuitDao {
+    constructor() { }
+    /**
+     * Calls on TuitModel to retrieve all tuits
+     */
+    findAllTuits() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return TuitModel_1.default.find();
+        });
+    }
+    /**
+     * Calls on TuitModel to retrieve all tuits posted by a user
+     * @param uid {string} user primary key
+     */
+    findAllTuitsByUser(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return TuitModel_1.default.find({ postedBy: uid });
+        });
+    }
+    /**
+     * Calls on TuitModel to retrieve a specific tuit
+     * @param tid {string} tuit primary key
+     */
+    findTuitById(tid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return TuitModel_1.default.findById(tid);
+        });
+    }
+    /**
+     * Calls on TuitModel to create a new instance of a tuit posted by a user
+     * @param uid {string} user primary key
+     * @param tuit {string} tuit content
+     */
+    createTuitByUser(uid, tuit) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield TuitModel_1.default.create(Object.assign(Object.assign({}, tuit), { postedBy: uid }));
+        });
+    }
+    /**
+     * Calls on TuitModel to delete an instance of a tuit
+     * @param tid {string} tuit primary key
+     */
+    deleteTuit(tid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return TuitModel_1.default.deleteOne({ _id: tid });
+        });
+    }
+    /**
+     * Calls on TuitModel to update an existing tuit with a new tuit object
+     * @param tid {string} tuit primary key
+     * @param tuit {Tuit} tuit to replace the exiting tuit
+     */
+    updateTuit(tid, tuit) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return TuitModel_1.default.updateOne({ _id: tid }, { $set: tuit });
+        });
     }
 }
-exports.default = LikeDao;
-LikeDao.likeDao = null;
+exports.default = TuitDao;
+TuitDao.tuitDao = null;
 /**
- * Creates a single instance of the LikeDao
- * @returns MessageDao
+ * Creates a single instance of the TuitDao
+ * @returns TuitDao
  */
-LikeDao.getInstance = () => {
-    if (LikeDao.likeDao === null) {
-        LikeDao.likeDao = new LikeDao();
+TuitDao.getInstance = () => {
+    if (TuitDao.tuitDao === null) {
+        TuitDao.tuitDao = new TuitDao();
     }
-    return LikeDao.likeDao;
+    return TuitDao.tuitDao;
 };
 </code></pre>
         </article>

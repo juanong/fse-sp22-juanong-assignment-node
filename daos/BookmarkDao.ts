@@ -21,7 +21,6 @@ export default class BookmarkDao implements BookmarkDaoI {
         }
         return BookmarkDao.bookmarkDao;
     }
-
     private constructor() {
     };
     /**

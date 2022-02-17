@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: daos/LikeDao.js</title>
+    <title>JSDoc: Source: daos/FollowDao.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: daos/LikeDao.js</h1>
+    <h1 class="page-title">Source: daos/FollowDao.js</h1>
 
     
 
@@ -40,48 +40,48 @@ var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
     return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const LikeModel_1 = __importDefault(require("../mongoose/likes/LikeModel"));
+const FollowModel_1 = __importDefault(require("../mongoose/follows/FollowModel"));
 /**
- * @class BookmarkDao implements a data access object that manages all bookmark data
- * @property {BookmarkDao} bookmarkDao is a private instance of Bookmark DAO using the singleton pattern
+ * @class FollowDao implements a data access object that manages all follows data
+ * @property {FollowDao} followDao is a private instance of Follow DAO using the singleton pattern
  */
-class LikeDao {
+class FollowDao {
     constructor() {
         /**
-         * Calls on LikeModel to retrieve all users that like a tuit
-         * @param tid {string} tuit primary key
-         */
-        this.findAllUsersThatLikedTuit = (tid) => LikeModel_1.default.find({ tuit: tid }).populate("likedBy").exec();
-        /**
-         * Calls on LikeModel to retrieve all tuits that have been liked by a user
+         * Calls on FollowModel to retrieve all users that follow a user
          * @param uid {string} user primary key
          */
-        this.findAllTuitsLikedByUser = (uid) => LikeModel_1.default.find({ likedBy: uid }).populate("tuit").exec();
+        this.findAllFollowersOfUser = (uid) => FollowModel_1.default.find({ user: uid }).exec();
         /**
-         * Calls on LikeModel to create a new Like instance
-         * @param tid {string} primary key of tuit being liked
-         * @param uid {string} primary key of user liking the tuit
+         * Calls on FollowModel to retrieve all users a user is following
+         * @param uid {string} user primary key
          */
-        this.userLikesTuit = (tid, uid) => LikeModel_1.default.create({ tuit: tid, likedBy: uid });
+        this.findAllUsersThatUserFollows = (uid) => FollowModel_1.default.find({ followedBy: uid }).exec();
         /**
-         * Calls on LikeModel to delete a Like instance
-         * @param tid {string} primary key of tuit being unliked
-         * @param uid {string} primary key of user unliking the tuit
+         * Calls on FollowModel to create a new Follow instance
+         * @param uid {string} primary key of user following another user
+         * @param followedUserId {string} primary key of user being followed
          */
-        this.userUnlikesTuit = (tid, uid) => __awaiter(this, void 0, void 0, function* () { return LikeModel_1.default.deleteOne({ tuit: tid, likedBy: uid }); });
+        this.userFollowsUser = (uid, followedUserId) => FollowModel_1.default.create({ user: followedUserId, followedBy: uid });
+        /**
+         * Calls on FollowModel to delete a Follow instance
+         * @param uid {string} primary key of user unfollowing another user
+         * @param unfollowedUserId {string} primary key of user being unfollowed
+         */
+        this.userUnfollowsUser = (uid, unfollowedUserId) => __awaiter(this, void 0, void 0, function* () { return FollowModel_1.default.deleteOne({ user: unfollowedUserId, followedBy: uid }); });
     }
 }
-exports.default = LikeDao;
-LikeDao.likeDao = null;
+exports.default = FollowDao;
+FollowDao.followDao = null;
 /**
- * Creates a single instance of the LikeDao
- * @returns MessageDao
+ * Creates a single instance of the FollowDao
+ * @returns FollowDao
  */
-LikeDao.getInstance = () => {
-    if (LikeDao.likeDao === null) {
-        LikeDao.likeDao = new LikeDao();
+FollowDao.getInstance = () => {
+    if (FollowDao.followDao == null) {
+        FollowDao.followDao = new FollowDao();
     }
-    return LikeDao.likeDao;
+    return FollowDao.followDao;
 };
 </code></pre>
         </article>

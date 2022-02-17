@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: MessageController</title>
+    <title>JSDoc: Class: LikeController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: MessageController</h1>
+    <h1 class="page-title">Class: LikeController</h1>
 
     
 
@@ -28,17 +28,15 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>MessageController<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>LikeController<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">MessageController Implements RESTful web service API for messages resource
+            <div class="class-description">LikeController Implements RESTful web service API for likes resource
 Defines the following HTTP endpoints:
 <ul>
-    <li>GET /users/:uid/messagesSent to retrieve all messages sent by a user</li>
-    <li>GET /users/:tid/messagesReceived to retrieve all messages received by a user</li>
-    <li>GET /users/:senderUid/messagesSent/:receiverUid to retrieve all messages a user sent to a specific user
-    <li>GET /users/:receiverUid/messagesSent/:senderUid to retrieve all messages a user received from a specific user
-    <li>POST /users/:senderUid/messages/:receiverUid to record that a user messaged another user</li>
-    <li>DELETE /messages/:mid to delete a message</li>
+    <li>GET /users/:uid/likes to retrieve all tuits liked by a user</li>
+    <li>GET /tuits/:tid/likes to retrieve all users that liked a tuit</li>
+    <li>POST /users/:uid/likes/:tid to record that a user liked a tuit</li>
+    <li>DELETE /users/:uid/unlikes/:tid to record that a user no longer likes a tuit</li>
 </ul></div>
         
     
@@ -54,7 +52,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="MessageController"><span class="type-signature"></span>new MessageController<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="LikeController"><span class="type-signature"></span>new LikeController<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -99,7 +97,7 @@ Defines the following HTTP endpoints:
 
         <tr>
             
-                <td class="name"><code>bookmarkDao</code></td>
+                <td class="name"><code>likeDao</code></td>
             
 
             <td class="type">
@@ -115,14 +113,14 @@ Defines the following HTTP endpoints:
 
             
 
-            <td class="description last">Singleton DAO implementing bookmarks CRUD operations</td>
+            <td class="description last">Singleton DAO implementing likes CRUD operations</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bookmarkController</code></td>
+                <td class="name"><code>likeController</code></td>
             
 
             <td class="type">
@@ -177,7 +175,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line21">line 21</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -241,7 +239,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Create a single instance of the message controller
+    Create a single instance of the like controller
 </div>
 
 
@@ -334,7 +332,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line95">line 95</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line73">line 73</a>
     </li></ul></dd>
     
 
@@ -363,7 +361,7 @@ Defines the following HTTP endpoints:
 
         
 <div class="param-desc">
-    MessageController
+    LikeController
 </div>
 
 
@@ -380,7 +378,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="findAllMessagesSentToUser"><span class="type-signature"></span>findAllMessagesSentToUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllTuitsLikedByUser"><span class="type-signature"></span>findAllTuitsLikedByUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -388,7 +386,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Retrieves all messages sent to a user from the database
+    Retrieves all tuits liked by a user from the database
 </div>
 
 
@@ -441,7 +439,7 @@ Defines the following HTTP endpoints:
             
 
             <td class="description last">The request from the client, including the path parameter uid representing the user
-who has received messages</td>
+who has liked tuits</td>
         </tr>
 
     
@@ -465,7 +463,7 @@ who has received messages</td>
             
 
             <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
+relevant tuit objects</td>
         </tr>
 
     
@@ -506,7 +504,7 @@ relevant message objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line39">line 39</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -542,7 +540,7 @@ relevant message objects</td>
     
 
     
-    <h4 class="name" id="findAllMessagesUserReceivedFromUser"><span class="type-signature"></span>findAllMessagesUserReceivedFromUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllUsersThatLikedTuit"><span class="type-signature"></span>findAllUsersThatLikedTuit<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -550,7 +548,7 @@ relevant message objects</td>
 
 
 <div class="description">
-    Retrieves all messages a user reveived from a user from the database
+    Retrieves all users that liked a specific tuit from the database
 </div>
 
 
@@ -602,8 +600,7 @@ relevant message objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameter senderUid representing the user
-who has sent messages and receiverUid representing the user who has received messages</td>
+            <td class="description last">The request from the client, including the path parameter tid representing the tuit</td>
         </tr>
 
     
@@ -627,7 +624,7 @@ who has sent messages and receiverUid representing the user who has received mes
             
 
             <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
+relevant user objects</td>
         </tr>
 
     
@@ -668,7 +665,7 @@ relevant message objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line60">line 60</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line38">line 38</a>
     </li></ul></dd>
     
 
@@ -704,7 +701,7 @@ relevant message objects</td>
     
 
     
-    <h4 class="name" id="findAllMessagesUserSent"><span class="type-signature"></span>findAllMessagesUserSent<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="userLikesTuit"><span class="type-signature"></span>userLikesTuit<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -712,7 +709,7 @@ relevant message objects</td>
 
 
 <div class="description">
-    Retrieves all messages sent by a user from the database
+    Creates a like instance in the database
 </div>
 
 
@@ -764,8 +761,8 @@ relevant message objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameter uid representing the user
-who has sent messages</td>
+            <td class="description last">The request from the client, including the path parameters uid and tid representing
+the user liking the tuit and the tuit being liked</td>
         </tr>
 
     
@@ -788,8 +785,8 @@ who has sent messages</td>
 
             
 
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
+            <td class="description last">The response to the client, including the body as a JSON object containing
+the new like</td>
         </tr>
 
     
@@ -830,7 +827,7 @@ relevant message objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line30">line 30</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line49">line 49</a>
     </li></ul></dd>
     
 
@@ -866,7 +863,7 @@ relevant message objects</td>
     
 
     
-    <h4 class="name" id="findAllMessagesUserSentToUser"><span class="type-signature"></span>findAllMessagesUserSentToUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="userUnlikesTuit"><span class="type-signature"></span>userUnlikesTuit<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -874,7 +871,7 @@ relevant message objects</td>
 
 
 <div class="description">
-    Retrieves all messages a user sent to a user from the database
+    Deletes a like instance in the database
 </div>
 
 
@@ -926,8 +923,8 @@ relevant message objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameter senderUid representing the user
-who has sent messages and receiverUid representing the user who has received messages</td>
+            <td class="description last">The request from the client, including the path parameters uid and tid representing
+the user unliking the tuit and the tuit being unliked</td>
         </tr>
 
     
@@ -950,169 +947,7 @@ who has sent messages and receiverUid representing the user who has received mes
 
             
 
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userDeletesMessage"><span class="type-signature"></span>userDeletesMessage<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Deletes a message instance in the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request from the client, including the path parameters mid representing
-the message being deleted</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response to the client, including status on whether deleting the message
+            <td class="description last">The response to the client, including status on whether deleting the like
 was successful or not</td>
         </tr>
 
@@ -1154,169 +989,7 @@ was successful or not</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line82">line 82</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userSendsMessage"><span class="type-signature"></span>userSendsMessage<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Creates a message instance in the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request from the client, including the path parameters senderUid and receiverUid representing
-the user sending a message to another user and the message being created</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response to the client, including the body as a JSON object containing
-the new bookmark</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line71">line 71</a>
+        <a href="controllers_LikeController.js.html">controllers/LikeController.js</a>, <a href="controllers_LikeController.js.html#line60">line 60</a>
     </li></ul></dd>
     
 

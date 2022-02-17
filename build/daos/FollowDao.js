@@ -13,22 +13,42 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const FollowModel_1 = __importDefault(require("../mongoose/follows/FollowModel"));
+/**
+ * @class FollowDao implements a data access object that manages all follows data
+ * @property {FollowDao} followDao is a private instance of Follow DAO using the singleton pattern
+ */
 class FollowDao {
     constructor() {
+        /**
+         * Calls on FollowModel to retrieve all users that follow a user
+         * @param uid {string} user primary key
+         */
         this.findAllFollowersOfUser = (uid) => FollowModel_1.default.find({ user: uid }).exec();
+        /**
+         * Calls on FollowModel to retrieve all users a user is following
+         * @param uid {string} user primary key
+         */
         this.findAllUsersThatUserFollows = (uid) => FollowModel_1.default.find({ followedBy: uid }).exec();
+        /**
+         * Calls on FollowModel to create a new Follow instance
+         * @param uid {string} primary key of user following another user
+         * @param followedUserId {string} primary key of user being followed
+         */
         this.userFollowsUser = (uid, followedUserId) => FollowModel_1.default.create({ user: followedUserId, followedBy: uid });
+        /**
+         * Calls on FollowModel to delete a Follow instance
+         * @param uid {string} primary key of user unfollowing another user
+         * @param unfollowedUserId {string} primary key of user being unfollowed
+         */
         this.userUnfollowsUser = (uid, unfollowedUserId) => __awaiter(this, void 0, void 0, function* () { return FollowModel_1.default.deleteOne({ user: unfollowedUserId, followedBy: uid }); });
-        this.deleteFollow = (followId) => __awaiter(this, void 0, void 0, function* () { return FollowModel_1.default.deleteOne({ _id: followId }); });
-    }
-    findAllFollows() {
-        return __awaiter(this, void 0, void 0, function* () {
-            return FollowModel_1.default.find();
-        });
     }
 }
 exports.default = FollowDao;
 FollowDao.followDao = null;
+/**
+ * Creates a single instance of the FollowDao
+ * @returns FollowDao
+ */
 FollowDao.getInstance = () => {
     if (FollowDao.followDao == null) {
         FollowDao.followDao = new FollowDao();

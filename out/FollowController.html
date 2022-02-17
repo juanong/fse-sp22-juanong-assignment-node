@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: MessageController</title>
+    <title>JSDoc: Class: FollowController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: MessageController</h1>
+    <h1 class="page-title">Class: FollowController</h1>
 
     
 
@@ -28,17 +28,15 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>MessageController<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>FollowController<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">MessageController Implements RESTful web service API for messages resource
+            <div class="class-description">FollowController Implements RESTful web service API for follows resource
 Defines the following HTTP endpoints:
 <ul>
-    <li>GET /users/:uid/messagesSent to retrieve all messages sent by a user</li>
-    <li>GET /users/:tid/messagesReceived to retrieve all messages received by a user</li>
-    <li>GET /users/:senderUid/messagesSent/:receiverUid to retrieve all messages a user sent to a specific user
-    <li>GET /users/:receiverUid/messagesSent/:senderUid to retrieve all messages a user received from a specific user
-    <li>POST /users/:senderUid/messages/:receiverUid to record that a user messaged another user</li>
-    <li>DELETE /messages/:mid to delete a message</li>
+    <li>GET /users/:uid/followers to retrieve all users that follow a user</li>
+    <li>GET /users/:uid/following to retrieve all users that a user is following</li>
+    <li>POST /users/:uid/follows/:followedUserId to record that a user follows another user</li>
+    <li>DELETE /users/:uid/unfollows/:unfollowedUserId to record that a user no longer follows a user</li>
 </ul></div>
         
     
@@ -54,7 +52,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="MessageController"><span class="type-signature"></span>new MessageController<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="FollowController"><span class="type-signature"></span>new FollowController<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -99,13 +97,13 @@ Defines the following HTTP endpoints:
 
         <tr>
             
-                <td class="name"><code>bookmarkDao</code></td>
+                <td class="name"><code>followDao</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="BookmarkDao.html">BookmarkDao</a></span>
+<span class="param-type"><a href="FollowDao.html">FollowDao</a></span>
 
 
             
@@ -115,20 +113,20 @@ Defines the following HTTP endpoints:
 
             
 
-            <td class="description last">Singleton DAO implementing bookmarks CRUD operations</td>
+            <td class="description last">Singleton DAO implementing follows CRUD operations</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>bookmarkController</code></td>
+                <td class="name"><code>followController</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="BookmarkController.html">BookmarkController</a></span>
+<span class="param-type"><a href="FollowController.html">FollowController</a></span>
 
 
             
@@ -177,7 +175,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line21">line 21</a>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line19">line 19</a>
     </li></ul></dd>
     
 
@@ -241,7 +239,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Create a single instance of the message controller
+    Create a single instance of the follow controller
 </div>
 
 
@@ -334,7 +332,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line95">line 95</a>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line69">line 69</a>
     </li></ul></dd>
     
 
@@ -363,7 +361,7 @@ Defines the following HTTP endpoints:
 
         
 <div class="param-desc">
-    MessageController
+    FollowController
 </div>
 
 
@@ -380,7 +378,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="findAllMessagesSentToUser"><span class="type-signature"></span>findAllMessagesSentToUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllFollowersOfUser"><span class="type-signature"></span>findAllFollowersOfUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -388,7 +386,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Retrieves all messages sent to a user from the database
+    Retrieves all users that follow a user from the database
 </div>
 
 
@@ -441,7 +439,7 @@ Defines the following HTTP endpoints:
             
 
             <td class="description last">The request from the client, including the path parameter uid representing the user
-who has received messages</td>
+who has followers</td>
         </tr>
 
     
@@ -465,7 +463,7 @@ who has received messages</td>
             
 
             <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
+relevant user objects</td>
         </tr>
 
     
@@ -506,7 +504,7 @@ relevant message objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line39">line 39</a>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -542,7 +540,7 @@ relevant message objects</td>
     
 
     
-    <h4 class="name" id="findAllMessagesUserReceivedFromUser"><span class="type-signature"></span>findAllMessagesUserReceivedFromUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllUsersThatUserFollows"><span class="type-signature"></span>findAllUsersThatUserFollows<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -550,169 +548,7 @@ relevant message objects</td>
 
 
 <div class="description">
-    Retrieves all messages a user reveived from a user from the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request from the client, including the path parameter senderUid representing the user
-who has sent messages and receiverUid representing the user who has received messages</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line60">line 60</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findAllMessagesUserSent"><span class="type-signature"></span>findAllMessagesUserSent<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Retrieves all messages sent by a user from the database
+    Retrieves all users that a user is following
 </div>
 
 
@@ -765,7 +601,7 @@ relevant message objects</td>
             
 
             <td class="description last">The request from the client, including the path parameter uid representing the user
-who has sent messages</td>
+who is following others</td>
         </tr>
 
     
@@ -789,7 +625,7 @@ who has sent messages</td>
             
 
             <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
+relevant user objects</td>
         </tr>
 
     
@@ -830,7 +666,7 @@ relevant message objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line30">line 30</a>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line37">line 37</a>
     </li></ul></dd>
     
 
@@ -866,7 +702,7 @@ relevant message objects</td>
     
 
     
-    <h4 class="name" id="findAllMessagesUserSentToUser"><span class="type-signature"></span>findAllMessagesUserSentToUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="userFollowsUser"><span class="type-signature"></span>userFollowsUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -874,7 +710,7 @@ relevant message objects</td>
 
 
 <div class="description">
-    Retrieves all messages a user sent to a user from the database
+    Creates a follow instance in the database
 </div>
 
 
@@ -926,332 +762,8 @@ relevant message objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameter senderUid representing the user
-who has sent messages and receiverUid representing the user who has received messages</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant message objects</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line49">line 49</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userDeletesMessage"><span class="type-signature"></span>userDeletesMessage<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Deletes a message instance in the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request from the client, including the path parameters mid representing
-the message being deleted</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>res</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Response</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The response to the client, including status on whether deleting the message
-was successful or not</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line82">line 82</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userSendsMessage"><span class="type-signature"></span>userSendsMessage<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Creates a message instance in the database
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>req</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Request</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">The request from the client, including the path parameters senderUid and receiverUid representing
-the user sending a message to another user and the message being created</td>
+            <td class="description last">The request from the client, including the path parameters uid and followedUsrId
+representing the user following another user and that user being followed</td>
         </tr>
 
     
@@ -1275,7 +787,7 @@ the user sending a message to another user and the message being created</td>
             
 
             <td class="description last">The response to the client, including the body as a JSON object containing
-the new bookmark</td>
+the new follow</td>
         </tr>
 
     
@@ -1316,7 +828,169 @@ the new bookmark</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_MessageController.js.html">controllers/MessageController.js</a>, <a href="controllers_MessageController.js.html#line71">line 71</a>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="userUnfollowsUser"><span class="type-signature"></span>userUnfollowsUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Deletes a follow instance in the database
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The request from the client, including the path parameters uid and unfollowedUsrId
+representing the user unfollowing another user and that user being unfollowed</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The response to the client, including status on whether deleting the follow was
+successful or not</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line56">line 56</a>
     </li></ul></dd>
     
 

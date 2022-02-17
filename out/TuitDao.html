@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: BookmarkDao</title>
+    <title>JSDoc: Class: TuitDao</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: BookmarkDao</h1>
+    <h1 class="page-title">Class: TuitDao</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>BookmarkDao<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>TuitDao<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">BookmarkDao implements a data access object that manages all bookmark data</div>
+            <div class="class-description">TuitDao implements a data access object that manages all tuit data</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="BookmarkDao"><span class="type-signature"></span>new BookmarkDao<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TuitDao"><span class="type-signature"></span>new TuitDao<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -90,13 +90,13 @@
 
         <tr>
             
-                <td class="name"><code>bookmarkDao</code></td>
+                <td class="name"><code>tuitDao</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="BookmarkDao.html">BookmarkDao</a></span>
+<span class="param-type"><a href="TuitDao.html">TuitDao</a></span>
 
 
             
@@ -106,7 +106,7 @@
 
             
 
-            <td class="description last">is a private instance of Bookmark DAO using the singleton pattern</td>
+            <td class="description last">is a private instance of Tuit DAO using the singleton pattern</td>
         </tr>
 
     
@@ -145,7 +145,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line20">line 20</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -209,7 +209,7 @@
 
 
 <div class="description">
-    Creates a single instance of the BookmarkDao
+    Creates a single instance of the TuitDao
 </div>
 
 
@@ -253,7 +253,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line55">line 55</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line84">line 84</a>
     </li></ul></dd>
     
 
@@ -282,7 +282,7 @@
 
         
 <div class="param-desc">
-    BookmarkDao
+    TuitDao
 </div>
 
 
@@ -299,7 +299,7 @@
     
 
     
-    <h4 class="name" id="findAllTuitsBookmarkedByUser"><span class="type-signature"></span>findAllTuitsBookmarkedByUser<span class="signature">(uid)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createTuitByUser"><span class="type-signature"></span>createTuitByUser<span class="signature">(uid, tuit)</span><span class="type-signature"></span></h4>
     
 
     
@@ -307,8 +307,7 @@
 
 
 <div class="description">
-    Calls on BookmarkModel to retrieve all tuits bookmarked by single user,
-and populates the tuit references
+    Calls on TuitModel to create a new instance of a tuit posted by a user
 </div>
 
 
@@ -364,6 +363,29 @@ and populates the tuit references
         </tr>
 
     
+
+        <tr>
+            
+                <td class="name"><code>tuit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">tuit content</td>
+        </tr>
+
+    
     </tbody>
 </table>
 
@@ -401,7 +423,7 @@ and populates the tuit references
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line27">line 27</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -437,7 +459,7 @@ and populates the tuit references
     
 
     
-    <h4 class="name" id="findAllUsersThatBookmarkedTuit"><span class="type-signature"></span>findAllUsersThatBookmarkedTuit<span class="signature">(tid)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteTuit"><span class="type-signature"></span>deleteTuit<span class="signature">(tid)</span><span class="type-signature"></span></h4>
     
 
     
@@ -445,8 +467,7 @@ and populates the tuit references
 
 
 <div class="description">
-    Calls on BookmarkModel to retrieve all users that have bookmarked a specific tuit,
-and populates the user references
+    Calls on TuitModel to delete an instance of a tuit
 </div>
 
 
@@ -539,7 +560,7 @@ and populates the user references
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line33">line 33</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line62">line 62</a>
     </li></ul></dd>
     
 
@@ -575,7 +596,7 @@ and populates the user references
     
 
     
-    <h4 class="name" id="userBookmarksTuit"><span class="type-signature"></span>userBookmarksTuit<span class="signature">(uid, tid)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllTuits"><span class="type-signature"></span>findAllTuits<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -583,7 +604,95 @@ and populates the user references
 
 
 <div class="description">
-    Calls on BookmarkModel to create a new Bookmark instance
+    Calls on TuitModel to retrieve all tuits
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findAllTuitsByUser"><span class="type-signature"></span>findAllTuitsByUser<span class="signature">(uid)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on TuitModel to retrieve all tuits posted by a user
 </div>
 
 
@@ -638,6 +747,120 @@ and populates the user references
             <td class="description last">user primary key</td>
         </tr>
 
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findTuitById"><span class="type-signature"></span>findTuitById<span class="signature">(tid)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on TuitModel to retrieve a specific tuit
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
     
 
         <tr>
@@ -699,7 +922,7 @@ and populates the user references
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line39">line 39</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line43">line 43</a>
     </li></ul></dd>
     
 
@@ -735,7 +958,7 @@ and populates the user references
     
 
     
-    <h4 class="name" id="userUnbookmarksTuit"><span class="type-signature"></span>userUnbookmarksTuit<span class="signature">(uid, tid)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="updateTuit"><span class="type-signature"></span>updateTuit<span class="signature">(tid, tuit)</span><span class="type-signature"></span></h4>
     
 
     
@@ -743,7 +966,7 @@ and populates the user references
 
 
 <div class="description">
-    Calls on BookmarkModel to delete an existing instance of Bookmark
+    Calls on TuitModel to update an existing tuit with a new tuit object
 </div>
 
 
@@ -779,29 +1002,6 @@ and populates the user references
 
         <tr>
             
-                <td class="name"><code>uid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">user primary key</td>
-        </tr>
-
-    
-
-        <tr>
-            
                 <td class="name"><code>tid</code></td>
             
 
@@ -819,6 +1019,29 @@ and populates the user references
             
 
             <td class="description last">tuit primary key</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>tuit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Tuit</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">tuit to replace the exiting tuit</td>
         </tr>
 
     
@@ -859,7 +1082,7 @@ and populates the user references
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_BookmarkDao.js.html">daos/BookmarkDao.js</a>, <a href="daos_BookmarkDao.js.html#line45">line 45</a>
+        <a href="daos_TuitDao.js.html">daos/TuitDao.js</a>, <a href="daos_TuitDao.js.html#line72">line 72</a>
     </li></ul></dd>
     
 

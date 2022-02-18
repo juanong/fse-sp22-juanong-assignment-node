@@ -1,6 +1,26 @@
+/**
+ * @file Implements mongoose schema for tuits
+ */
 import mongoose from "mongoose";
 import Location from '../../models/users/Location'
 
+/**
+ * @typedef Location Represents where the user is located in lat/long coordinates
+ * @property {string} username represents the user's username
+ * @property {string} password represents the user's password
+ * @property {string} firstName represents the user's first name
+ * @property {string} lastName represents the user's last name
+ * @property {string} email represents the user's email
+ * @property {string} profilePhoto represents a url to the user's profile photo
+ * @property {string} headerImage represents a url to the user's header image
+ * @property {string} accountType represents the user's account type
+ * @property {string} maritalStatus represents the user's marital status
+ * @property {string} biography represents the user's biography
+ * @property {Date} dateOfBirth represents the user's date of birth
+ * @property {Date} joined represents the date the user created their account
+ * @property {Location} location represents the location of the user
+ * @property {Number} salary represents the user's salary
+ */
 const UserSchema = new mongoose.Schema({
     username: {type: String, required: true, default: `testusername${Date.now()}`},
     password: {type: String, required: true, default: `testpassword${Date.now()}`},

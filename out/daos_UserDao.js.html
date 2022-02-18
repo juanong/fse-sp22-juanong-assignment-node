@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: daos/FollowDao.js</title>
+    <title>JSDoc: Source: daos/UserDao.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: daos/FollowDao.js</h1>
+    <h1 class="page-title">Source: daos/UserDao.js</h1>
 
     
 
@@ -40,48 +40,78 @@ var __importDefault = (this &amp;&amp; this.__importDefault) || function (mod) {
     return (mod &amp;&amp; mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const FollowModel_1 = __importDefault(require("../mongoose/follows/FollowModel"));
+const UserModel_1 = __importDefault(require("../mongoose/users/UserModel"));
 /**
- * @class FollowDao implements a data access object that manages all follows data
- * @property {FollowDao} followDao is a private instance of Follow DAO using the singleton pattern
+ * @class UserDao implements a data access object that manages all user data
+ * @property {UserDao} userDao is a private instance of user DAO using the singleton pattern
  */
-class FollowDao {
-    constructor() {
-        /**
-         * Calls on FollowModel to retrieve all users that follow a user
-         * @param uid {string} user primary key
-         */
-        this.findAllFollowersOfUser = (uid) => FollowModel_1.default.find({ user: uid }).exec();
-        /**
-         * Calls on FollowModel to retrieve all users a user is following
-         * @param uid {string} user primary key
-         */
-        this.findAllUsersThatUserFollows = (uid) => FollowModel_1.default.find({ followedBy: uid }).exec();
-        /**
-         * Calls on FollowModel to create a new Follow instance
-         * @param uid {string} primary key of user following another user
-         * @param followedUserId {string} primary key of user being followed
-         */
-        this.userFollowsUser = (uid, followedUserId) => FollowModel_1.default.create({ user: followedUserId, followedBy: uid });
-        /**
-         * Calls on FollowModel to delete a Follow instance
-         * @param uid {string} primary key of user unfollowing another user
-         * @param unfollowedUserId {string} primary key of user being unfollowed
-         */
-        this.userUnfollowsUser = (uid, unfollowedUserId) => __awaiter(this, void 0, void 0, function* () { return FollowModel_1.default.deleteOne({ user: unfollowedUserId, followedBy: uid }); });
+class UserDao {
+    constructor() { }
+    /**
+     * Calls on UserModel to retrieve all users
+     */
+    findAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return UserModel_1.default.find();
+        });
+    }
+    /**
+     * Calls on UserModel to retrieve a particular user instance
+     * @param uid {string} primary key of user to be retrieved
+     */
+    findUserById(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return UserModel_1.default.findById(uid);
+        });
+    }
+    /**
+     * Calls on UserModel to create a new instance of a user
+     * @param user {User} User to be added to the database
+     */
+    createUser(user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return yield UserModel_1.default.create(user);
+        });
+    }
+    /**
+     * Calls on UserModel to delete an instance of a user
+     * @param uid {string} primary key ot user to be deleted
+     */
+    deleteUser(uid) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return UserModel_1.default.deleteOne({ _id: uid });
+        });
+    }
+    /**
+     * Calls on UserModel to update an existing user with a new user object
+     * @param uid {string} user primary key
+     * @param user {User} user to replace the exiting user
+     */
+    updateUser(uid, user) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return UserModel_1.default.updateOne({ _id: uid }, { $set: user });
+        });
+    }
+    /**
+     * Calls on UserModel to delete all user instances
+     */
+    deleteAllUsers() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return UserModel_1.default.deleteMany({});
+        });
     }
 }
-exports.default = FollowDao;
-FollowDao.followDao = null;
+exports.default = UserDao;
+UserDao.userDao = null;
 /**
- * Creates a single instance of the FollowDao
- * @returns FollowDao
+ * Creates a single instance of the UserDao
+ * @returns UserDao
  */
-FollowDao.getInstance = () => {
-    if (FollowDao.followDao == null) {
-        FollowDao.followDao = new FollowDao();
+UserDao.getInstance = () => {
+    if (UserDao.userDao === null) {
+        UserDao.userDao = new UserDao();
     }
-    return FollowDao.followDao;
+    return UserDao.userDao;
 };
 </code></pre>
         </article>

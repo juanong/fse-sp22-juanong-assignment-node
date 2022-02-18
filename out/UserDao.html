@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: MessageDao</title>
+    <title>JSDoc: Class: UserDao</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: MessageDao</h1>
+    <h1 class="page-title">Class: UserDao</h1>
 
     
 
@@ -28,9 +28,9 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>MessageDao<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>UserDao<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">MessageDao implements a data access object that manages all message data</div>
+            <div class="class-description">UserDao implements a data access object that manages all user data</div>
         
     
 </header>
@@ -45,7 +45,7 @@
     
 
     
-    <h4 class="name" id="MessageDao"><span class="type-signature"></span>new MessageDao<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="UserDao"><span class="type-signature"></span>new UserDao<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -90,13 +90,13 @@
 
         <tr>
             
-                <td class="name"><code>messageDao</code></td>
+                <td class="name"><code>userDao</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="MessageDao.html">MessageDao</a></span>
+<span class="param-type"><a href="UserDao.html">UserDao</a></span>
 
 
             
@@ -106,7 +106,7 @@
 
             
 
-            <td class="description last">is a private instance of Message DAO using the singleton pattern</td>
+            <td class="description last">is a private instance of user DAO using the singleton pattern</td>
         </tr>
 
     
@@ -145,7 +145,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line20">line 20</a>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -209,7 +209,7 @@
 
 
 <div class="description">
-    Creates a single instance of the MessageDao
+    Creates a single instance of the UserDao
 </div>
 
 
@@ -253,7 +253,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line87">line 87</a>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line82">line 82</a>
     </li></ul></dd>
     
 
@@ -282,7 +282,7 @@
 
         
 <div class="param-desc">
-    MessageDao
+    UserDao
 </div>
 
 
@@ -299,7 +299,7 @@
     
 
     
-    <h4 class="name" id="findAllMessagesSentToUser"><span class="type-signature"></span>findAllMessagesSentToUser<span class="signature">(uid)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createUser"><span class="type-signature"></span>createUser<span class="signature">(user)</span><span class="type-signature"></span></h4>
     
 
     
@@ -307,7 +307,594 @@
 
 
 <div class="description">
-    Calls on MessageModel to retrieve all messages that was sent to a user
+    Calls on UserModel to create a new instance of a user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">User</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">User to be added to the database</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line43">line 43</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteAllUsers"><span class="type-signature"></span>deleteAllUsers<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on UserModel to delete all user instances
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteUser"><span class="type-signature"></span>deleteUser<span class="signature">(uid)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on UserModel to delete an instance of a user
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>uid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">primary key ot user to be deleted</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findAllUsers"><span class="type-signature"></span>findAllUsers<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on UserModel to retrieve all users
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findUserById"><span class="type-signature"></span>findUserById<span class="signature">(uid)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on UserModel to retrieve a particular user instance
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>uid</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">primary key of user to be retrieved</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line34">line 34</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateUser"><span class="type-signature"></span>updateUser<span class="signature">(uid, user)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Calls on UserModel to update an existing user with a new user object
 </div>
 
 
@@ -363,130 +950,16 @@
         </tr>
 
     
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line35">line 35</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findAllMessagesUserReceivedFromUser"><span class="type-signature"></span>findAllMessagesUserReceivedFromUser<span class="signature">(senderUid, receiverUid)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Calls on MessageModel to retrieve all messages that a user received from a specific user
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
 
         <tr>
             
-                <td class="name"><code>senderUid</code></td>
+                <td class="name"><code>user</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">string</span>
+<span class="param-type">User</span>
 
 
             
@@ -496,30 +969,7 @@
 
             
 
-            <td class="description last">primary key of sender user</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>receiverUid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">primary key of receiver user</td>
+            <td class="description last">user to replace the exiting user</td>
         </tr>
 
     
@@ -560,624 +1010,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line55">line 55</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findAllMessagesUserSent"><span class="type-signature"></span>findAllMessagesUserSent<span class="signature">(uid)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Calls on MessageModel to retrieve all messages that a user sent
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>uid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">user primary key</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line26">line 26</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="findAllMessagesUserSentToUser"><span class="type-signature"></span>findAllMessagesUserSentToUser<span class="signature">(senderUid, receiverUid)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Calls on MessageModel to retrieve all messages that a user sent to a specific user
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>senderUid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">primary key of sender user</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>receiverUid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">primary key of receiver user</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line45">line 45</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userDeletesMessage"><span class="type-signature"></span>userDeletesMessage<span class="signature">(mid)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Calls on MessageModel to delete a Message instance
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>mid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">message primary key</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line75">line 75</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id="userSendsMessage"><span class="type-signature"></span>userSendsMessage<span class="signature">(senderUid, receiverUid, message)</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    Calls on MessageModel to create a new Message instance
-</div>
-
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>senderUid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">primary key of sender user</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>receiverUid</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">primary key of receiver user</td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>message</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Message</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last">contents of the message being sent</td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="daos_MessageDao.js.html">daos/MessageDao.js</a>, <a href="daos_MessageDao.js.html#line66">line 66</a>
+        <a href="daos_UserDao.js.html">daos/UserDao.js</a>, <a href="daos_UserDao.js.html#line62">line 62</a>
     </li></ul></dd>
     
 

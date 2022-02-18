@@ -3,6 +3,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @file Implements an Express Node HTTP server. Declares RESTful Web services
+ * enabling CRUD operations on the following resources:
+ * <ul>
+ *     <li>users</li>
+ *     <li>tuits</li>
+ *     <li>likes</li>
+ *     <li>bookmarks</li>
+ *     <li>follows</li>
+ *     <li>messages</li>
+ * </ul>
+ *
+ * Connects to a remote MongoDB instance hosted on the Atlas cloud database
+ * service
+ */
 const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const UserController_1 = __importDefault(require("./controllers/UserController"));
@@ -25,5 +40,9 @@ const likeController = LikeController_1.default.getInstance(app);
 const bookmarkController = BookmarkController_1.default.getInstance(app);
 const followController = FollowController_1.default.getInstance(app);
 const messageController = MessageController_1.default.getInstance(app);
+/**
+ * Start a server listening at port 4000 locally
+ * but use environment variable PORT on Heroku if available.
+ */
 const PORT = 4000;
 app.listen(process.env.PORT || PORT);

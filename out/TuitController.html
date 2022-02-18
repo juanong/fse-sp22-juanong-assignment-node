@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: FollowController</title>
+    <title>JSDoc: Class: TuitController</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: FollowController</h1>
+    <h1 class="page-title">Class: TuitController</h1>
 
     
 
@@ -28,15 +28,17 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>FollowController<span class="signature">()</span><span class="type-signature"></span></h2>
+        <h2><span class="attribs"><span class="type-signature"></span></span>TuitController<span class="signature">()</span><span class="type-signature"></span></h2>
         
-            <div class="class-description">FollowController Implements RESTful web service API for follows resource
+            <div class="class-description">TuitController Implements RESTful Web service API for tuits resource.
 Defines the following HTTP endpoints:
 <ul>
-    <li>GET /users/:uid/followers to retrieve all users that follow a user</li>
-    <li>GET /users/:uid/following to retrieve all users that a user is following</li>
-    <li>POST /users/:uid/follows/:followedUserId to record that a user follows another user</li>
-    <li>DELETE /users/:uid/unfollows/:unfollowedUserId to record that a user no longer follows a user</li>
+    <li>GET /tuits to retrieve all the tuit instances</li>
+    <li>GET /tuits/:tid to retrieve a particular tuit instance</li>
+    <li>GET /users/:uid/tuits to retrieve tuits for a given user </li>
+    <li>POST /users/:uid/tuits to create a new tuit instance for a given user</li>
+    <li>PUT /tuits/:tid to modify an individual tuit instance </li>
+    <li>DELETE /tuits/:tid to remove a particular tuit instance</li>
 </ul></div>
         
     
@@ -52,7 +54,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="FollowController"><span class="type-signature"></span>new FollowController<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="TuitController"><span class="type-signature"></span>new TuitController<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -97,13 +99,13 @@ Defines the following HTTP endpoints:
 
         <tr>
             
-                <td class="name"><code>followDao</code></td>
+                <td class="name"><code>tuitDao</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="FollowDao.html">FollowDao</a></span>
+<span class="param-type"><a href="TuitDao.html">TuitDao</a></span>
 
 
             
@@ -113,20 +115,20 @@ Defines the following HTTP endpoints:
 
             
 
-            <td class="description last">Singleton DAO implementing follows CRUD operations</td>
+            <td class="description last">Singleton DAO implementing tuit CRUD operations</td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>followController</code></td>
+                <td class="name"><code>tuitController</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type"><a href="FollowController.html">FollowController</a></span>
+<span class="param-type"><a href="TuitController.html">TuitController</a></span>
 
 
             
@@ -136,7 +138,7 @@ Defines the following HTTP endpoints:
 
             
 
-            <td class="description last">Singleton controller implementing RESTful web service API</td>
+            <td class="description last">Singleton controller implementing RESTful Web service API</td>
         </tr>
 
     
@@ -175,7 +177,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line19">line 19</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -239,7 +241,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Create a single instance of the follow controller
+    Create a single instance of the tuit controller
 </div>
 
 
@@ -332,7 +334,7 @@ Defines the following HTTP endpoints:
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line69">line 69</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line85">line 85</a>
     </li></ul></dd>
     
 
@@ -361,7 +363,7 @@ Defines the following HTTP endpoints:
 
         
 <div class="param-desc">
-    FollowController
+    TuitController
 </div>
 
 
@@ -378,7 +380,7 @@ Defines the following HTTP endpoints:
     
 
     
-    <h4 class="name" id="findAllFollowersOfUser"><span class="type-signature"></span>findAllFollowersOfUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="createTuitByUser"><span class="type-signature"></span>createTuitByUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -386,7 +388,7 @@ Defines the following HTTP endpoints:
 
 
 <div class="description">
-    Retrieves all users that follow a user from the database
+    Creates a new instance of a tuit
 </div>
 
 
@@ -438,8 +440,8 @@ Defines the following HTTP endpoints:
 
             
 
-            <td class="description last">The request from the client, including the path parameter uid representing the user
-who has followers</td>
+            <td class="description last">Represents request from client, including body
+containing the JSON object for the new tuit to be inserted in the database</td>
         </tr>
 
     
@@ -462,8 +464,8 @@ who has followers</td>
 
             
 
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant user objects</td>
+            <td class="description last">Represents response to client, including the
+body formatted as JSON containing the new tuit that was inserted in the database</td>
         </tr>
 
     
@@ -504,7 +506,7 @@ relevant user objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line28">line 28</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line55">line 55</a>
     </li></ul></dd>
     
 
@@ -540,7 +542,7 @@ relevant user objects</td>
     
 
     
-    <h4 class="name" id="findAllUsersThatUserFollows"><span class="type-signature"></span>findAllUsersThatUserFollows<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="deleteTuit"><span class="type-signature"></span>deleteTuit<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -548,7 +550,7 @@ relevant user objects</td>
 
 
 <div class="description">
-    Retrieves all users that a user is following
+    Deletes an existing instance of a tuit
 </div>
 
 
@@ -600,8 +602,8 @@ relevant user objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameter uid representing the user
-who is following others</td>
+            <td class="description last">Represents request from client, including path
+parameter tid identifying the primary key of the tuit to be removed</td>
         </tr>
 
     
@@ -624,8 +626,8 @@ who is following others</td>
 
             
 
-            <td class="description last">The response to the client, including the body as a JSON array containing the
-relevant user objects</td>
+            <td class="description last">Represents response to client, including status
+on whether deleting a user was successful or not</td>
         </tr>
 
     
@@ -666,7 +668,7 @@ relevant user objects</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line37">line 37</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line64">line 64</a>
     </li></ul></dd>
     
 
@@ -702,7 +704,7 @@ relevant user objects</td>
     
 
     
-    <h4 class="name" id="userFollowsUser"><span class="type-signature"></span>userFollowsUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllTuits"><span class="type-signature"></span>findAllTuits<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -710,7 +712,7 @@ relevant user objects</td>
 
 
 <div class="description">
-    Creates a follow instance in the database
+    Retrieves all tuits from the database and returns an array of tuits
 </div>
 
 
@@ -762,8 +764,7 @@ relevant user objects</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameters uid and followedUsrId
-representing the user following another user and that user being followed</td>
+            <td class="description last">Represents request from client</td>
         </tr>
 
     
@@ -786,8 +787,8 @@ representing the user following another user and that user being followed</td>
 
             
 
-            <td class="description last">The response to the client, including the body as a JSON object containing
-the new follow</td>
+            <td class="description last">Represents response to client, including the
+body formatted as JSON arrays containing the tuit objects</td>
         </tr>
 
     
@@ -828,7 +829,7 @@ the new follow</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line46">line 46</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line29">line 29</a>
     </li></ul></dd>
     
 
@@ -864,7 +865,7 @@ the new follow</td>
     
 
     
-    <h4 class="name" id="userUnfollowsUser"><span class="type-signature"></span>userUnfollowsUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="findAllTuitsByUser"><span class="type-signature"></span>findAllTuitsByUser<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
     
 
     
@@ -872,7 +873,7 @@ the new follow</td>
 
 
 <div class="description">
-    Deletes a follow instance in the database
+    Retrieves all tuits from the database for a particular user and returns an array of tuits.
 </div>
 
 
@@ -924,8 +925,7 @@ the new follow</td>
 
             
 
-            <td class="description last">The request from the client, including the path parameters uid and unfollowedUsrId
-representing the user unfollowing another user and that user being unfollowed</td>
+            <td class="description last">Represents request from client</td>
         </tr>
 
     
@@ -948,8 +948,8 @@ representing the user unfollowing another user and that user being unfollowed</t
 
             
 
-            <td class="description last">The response to the client, including status on whether deleting the follow was
-successful or not</td>
+            <td class="description last">Represents response to client, including the
+body formatted as JSON arrays containing the tuit objects</td>
         </tr>
 
     
@@ -990,7 +990,331 @@ successful or not</td>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="controllers_FollowController.js.html">controllers/FollowController.js</a>, <a href="controllers_FollowController.js.html#line56">line 56</a>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line46">line 46</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="findTuitById"><span class="type-signature"></span>findTuitById<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Retrieves a particular tuit instance
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Represents request from client, including path
+parameter tid identifying the primary key of the tuit to be retrieved</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Represents response to client, including the
+body formatted as JSON containing the tuit that matches the tuit ID</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line38">line 38</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateTuit"><span class="type-signature"></span>updateTuit<span class="signature">(req, res)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Edits a particular instance of a tuit
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>req</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Request</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Represents request from client, including path
+parameter tid identifying the primary key of the tuit to be modified</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>res</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Response</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Represents response to client, including status
+on whether updating a tuit was successful or not</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="controllers_TuitController.js.html">controllers/TuitController.js</a>, <a href="controllers_TuitController.js.html#line73">line 73</a>
     </li></ul></dd>
     
 

@@ -19,7 +19,17 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @file Implements mongoose schema for messages between users
+ */
 const mongoose_1 = __importStar(require("mongoose"));
+/**
+ * @typedef Message Represents a message sent from one user to another
+ * @property {ObjectId} toUser represents the user receiving the message
+ * @proprety {ObjectId} fromUser represents the user sending the message
+ * @property {string} message represents the actual content of the message
+ * @property {Date} sentOn represents the date the message was sent
+ */
 const MessageSchema = new mongoose_1.default.Schema({
     toUser: { type: mongoose_1.Schema.Types.ObjectId, required: true },
     fromUser: { type: mongoose_1.Schema.Types.ObjectId, required: true },

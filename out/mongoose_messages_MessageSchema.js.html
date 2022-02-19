@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mongoose/bookmarks/BookmarkSchema.js</title>
+    <title>JSDoc: Source: mongoose/messages/MessageSchema.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mongoose/bookmarks/BookmarkSchema.js</h1>
+    <h1 class="page-title">Source: mongoose/messages/MessageSchema.js</h1>
 
     
 
@@ -48,19 +48,23 @@ var __importStar = (this &amp;&amp; this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
- * @file Implements mongoose schema for bookmarked tuits
+ * @file Implements mongoose schema for messages between users
  */
 const mongoose_1 = __importStar(require("mongoose"));
 /**
- * @typedef Bookmark Represents a tuit bookmarked by a user
- * @property {ObjectId} tuit represents the bookmarked tuit
- * @proprety {ObjectId} bookmarkedBy represents the user that bookmarked the tuit
+ * @typedef Message Represents a message sent from one user to another
+ * @property {ObjectId} toUser represents the user receiving the message
+ * @proprety {ObjectId} fromUser represents the user sending the message
+ * @property {string} message represents the actual content of the message
+ * @property {Date} sentOn represents the date the message was sent
  */
-const BookmarkSchema = new mongoose_1.default.Schema({
-    tuit: { type: mongoose_1.Schema.Types.ObjectId, ref: "TuitModel" },
-    bookmarkedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "UserModel" }
-}, { collection: "bookmarks" });
-exports.default = BookmarkSchema;
+const MessageSchema = new mongoose_1.default.Schema({
+    toUser: { type: mongoose_1.Schema.Types.ObjectId, required: true },
+    fromUser: { type: mongoose_1.Schema.Types.ObjectId, required: true },
+    message: { type: String, required: true },
+    sentOn: { type: Date, default: Date.now() }
+});
+exports.default = MessageSchema;
 </code></pre>
         </article>
     </section>

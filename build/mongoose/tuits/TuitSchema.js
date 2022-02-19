@@ -19,7 +19,16 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @file Implements mongoose schema for tuits
+ */
 const mongoose_1 = __importStar(require("mongoose"));
+/**
+ * @typedef Tuit Represents a tuit
+ * @property {string} tuit represents the content of the tuit
+ * @property {Date} postedOn represents when the tuit was posted
+ * @property {ObjectId} postedBy represents the user who posted the tuit
+ */
 const TuitSchema = new mongoose_1.default.Schema({
     tuit: { type: String, required: true },
     postedOn: { type: Date, default: Date.now() },

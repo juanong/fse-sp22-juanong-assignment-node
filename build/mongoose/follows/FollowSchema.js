@@ -19,7 +19,15 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @file Implements mongoose schema for follows
+ */
 const mongoose_1 = __importStar(require("mongoose"));
+/**
+ * @typedef Follow Represents a user following another user
+ * @property {ObjectId} user represents the user following another user
+ * @proprety {ObjectId} followedBy represents the user being followed
+ */
 const FollowSchema = new mongoose_1.default.Schema({
     user: { type: mongoose_1.Schema.Types.ObjectId, ref: "FollowModel" },
     followedBy: { type: mongoose_1.Schema.Types.ObjectId, ref: "FollowModel" }

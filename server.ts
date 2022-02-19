@@ -31,7 +31,7 @@ app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
 })
 
-mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+mongoose.connect("mongodb+srv://juanong-fse-user:fsea2password@fse-a2-cluster.na3ai.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);

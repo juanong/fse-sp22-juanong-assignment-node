@@ -30,7 +30,6 @@ export default class MessageController implements MessageControllerI {
     public static getInstance = (app: Express) : MessageController => {
         if (MessageController.messageController == null) {
             MessageController.messageController = new MessageController();
-            // all paths here
             app.get('/users/:uid/messagesSent',
                 MessageController.messageController.findAllMessagesUserSent);
             app.get('/users/:uid/messagesReceived',

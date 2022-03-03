@@ -23,7 +23,9 @@ import FollowController from "./controllers/FollowController";
 import MessageController from "./controllers/MessageController";
 import mongoose from 'mongoose';
 const app = express();
-app.use(bodyParser.json());
+var cors = require('cors');
+app.use(express.json());
+app.use(cors());
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
 

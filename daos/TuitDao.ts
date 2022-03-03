@@ -5,6 +5,7 @@
 import Tuit from '../models/tuits/Tuit';
 import TuitModel from '../mongoose/tuits/TuitModel';
 import TuitDaoI from '../interfaces/TuitDaoI';
+import UserModel from "../mongoose/users/UserModel";
 
 /**
  * @class TuitDao implements a data access object that manages all tuit data
@@ -27,21 +28,21 @@ export default class TuitDao implements TuitDaoI {
      * Calls on TuitModel to retrieve all tuits
      */
     async findAllTuits(): Promise<Tuit[]> {
-        return TuitModel.find();
+        return TuitModel.find().populate("postedBy");
     }
     /**
      * Calls on TuitModel to retrieve all tuits posted by a user
      * @param uid {string} user primary key
      */
     async findAllTuitsByUser(uid: string): Promise<Tuit[]> {
-        return TuitModel.find({postedBy: uid});
+        return TuitModel.find({postedBy: uid}).populate("postedBy");
     }
     /**
      * Calls on TuitModel to retrieve a specific tuit
      * @param tid {string} tuit primary key
      */
     async findTuitById(tid: string): Promise<any> {
-        return TuitModel.findById(tid);
+        return TuitModel.findById(tid).populate("postedBy");
     }
     /**
      * Calls on TuitModel to create a new instance of a tuit posted by a user

@@ -32,8 +32,18 @@ app.get('/hello', (req, res) =>
 app.get('/add/:a/:b', (req, res) => {
     res.send(req.params.a + req.params.b);
 })
-
+const PROTOCOL = "mongodb+srv";
+const DB_USERNAME = process.env.DB_USERNAME;
+const DB_PASSWORD = process.env.DB_PASSWORD;
+const HOST = "fsejuanong.vyxum.mongodb.net";
+const DB_NAME= "myFirstDatabase";
+const DB_QUERY= "retryWrites=true&w=majority";
+const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
+//mongoose.connect(connectionString);
 mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
+
+//console.log(connectionString);
+
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);
 const likeController = LikeController.getInstance(app);

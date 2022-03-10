@@ -29,16 +29,16 @@ export default class UserController implements UserControllerI {
    public static getInstance = (app: Express): UserController => {
        if (UserController.userController === null) {
            UserController.userController = new UserController();
-           app.get('/users', UserController.userController.findAllUsers);
-           app.get('/users/:userid', UserController.userController.findUserById);
-           app.post('/users', UserController.userController.createUser);
-           app.delete('/users/:userid', UserController.userController.deleteUser);
-           app.put('/users/:userid', UserController.userController.updateUser);
-           app.delete('/users', UserController.userController.deleteAllUsers);
-           app.post("/login", UserController.userController.login);
-           app.post("/register", UserController.userController.register);
+           app.get('/api/users', UserController.userController.findAllUsers);
+           app.get('/api/users/:userid', UserController.userController.findUserById);
+           app.post('/api/users', UserController.userController.createUser);
+           app.delete('/api/users/:userid', UserController.userController.deleteUser);
+           app.put('/api/users/:userid', UserController.userController.updateUser);
+           app.delete('/api/users', UserController.userController.deleteAllUsers);
+           app.post("/api/login", UserController.userController.login);
+           app.post("/api/register", UserController.userController.register);
            // For testing purposes
-           app.get('/users/username/:username/delete', UserController.userController.deleteUsersByUsername);
+           app.get('/api/users/username/:username/delete', UserController.userController.deleteUsersByUsername);
        }
        return UserController.userController;
    }

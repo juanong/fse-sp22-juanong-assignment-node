@@ -36,7 +36,9 @@ export default class TuitController implements TuitControllerI {
             app.post('/api/users/:uid/tuits', TuitController.tuitController.createTuitByUser);
             app.delete('/api/tuits/:tid', TuitController.tuitController.deleteTuit);
             app.put('/api/tuits/:tid', TuitController.tuitController.updateTuit);
+            // for testing purposes
             app.delete('/api/users/:uid/tuits', TuitController.tuitController.deleteTuitByAuthor);
+            app.delete('/api/tuits/content/:tuitContent', TuitController.tuitController.deleteTuitByContent);
         }
         return TuitController.tuitController;
     }
@@ -103,5 +105,9 @@ export default class TuitController implements TuitControllerI {
 
     deleteTuitByAuthor = (req: Request, res: Response) =>
         TuitController.tuitDao.deleteTuitByAuthor(req.params.uid)
+            .then(status => res.json(status));
+
+    deleteTuitByContent = (req: Request, res: Response) =>
+        TuitController.tuitDao.deleteTuitByContent(req.params.tuitContent)
             .then(status => res.json(status));
 }

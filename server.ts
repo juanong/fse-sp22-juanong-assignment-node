@@ -22,6 +22,8 @@ import BookmarkController from "./controllers/BookmarkController";
 import FollowController from "./controllers/FollowController";
 import MessageController from "./controllers/MessageController";
 import mongoose from 'mongoose';
+import 'dotenv/config'
+
 const app = express();
 var cors = require('cors');
 app.use(express.json());
@@ -39,10 +41,7 @@ const HOST = "fsejuanong.vyxum.mongodb.net";
 const DB_NAME= "myFirstDatabase";
 const DB_QUERY= "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
-//mongoose.connect(connectionString);
-mongoose.connect("mongodb+srv://juanong-fse-user:Aobcd8663@fsejuanong.vyxum.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
-
-//console.log(connectionString);
+mongoose.connect(connectionString);
 
 const userController = UserController.getInstance(app);
 const tuitController = TuitController.getInstance(app);

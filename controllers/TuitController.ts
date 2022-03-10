@@ -30,13 +30,13 @@ export default class TuitController implements TuitControllerI {
     public static getInstance = (app: Express): TuitController => {
         if (TuitController.tuitController === null) {
             TuitController.tuitController = new TuitController();
-            app.get('/tuits', TuitController.tuitController.findAllTuits);
-            app.get('/tuits/:tid', TuitController.tuitController.findTuitById);
-            app.get('/users/:uid/tuits', TuitController.tuitController.findAllTuitsByUser);
-            app.post('/users/:uid/tuits', TuitController.tuitController.createTuitByUser);
-            app.delete('/tuits/:tid', TuitController.tuitController.deleteTuit);
-            app.put('/tuits/:tid', TuitController.tuitController.updateTuit);
-            app.delete('/users/:uid/tuits', TuitController.tuitController.deleteTuitByAuthor);
+            app.get('/api/tuits', TuitController.tuitController.findAllTuits);
+            app.get('/api/tuits/:tid', TuitController.tuitController.findTuitById);
+            app.get('/api/users/:uid/tuits', TuitController.tuitController.findAllTuitsByUser);
+            app.post('/api/users/:uid/tuits', TuitController.tuitController.createTuitByUser);
+            app.delete('/api/tuits/:tid', TuitController.tuitController.deleteTuit);
+            app.put('/api/tuits/:tid', TuitController.tuitController.updateTuit);
+            app.delete('/api/users/:uid/tuits', TuitController.tuitController.deleteTuitByAuthor);
         }
         return TuitController.tuitController;
     }

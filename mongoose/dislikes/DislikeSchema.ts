@@ -6,7 +6,7 @@ import Dislike from "../../models/dislikes/Dislike";
 
 /**
  * @typedef Dislike Represents a tuit disliked by a user
- * @property {ObjectId} tuit represents the disliked tuit
+ * @property {ObjectId} tuit represents the tuit that is disliked
  * @property {ObjectId} dislikedBY represents the user that disliked the tuit
  */
 const DislikeSchema = new mongoose.Schema<Dislike>({

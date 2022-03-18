@@ -21,6 +21,7 @@ import LikeController from "./controllers/LikeController";
 import BookmarkController from "./controllers/BookmarkController";
 import FollowController from "./controllers/FollowController";
 import MessageController from "./controllers/MessageController";
+import DislikeController from "./controllers/DislikeController";
 import AuthenticationController from "./controllers/AuthenticationController";
 import mongoose from 'mongoose';
 import 'dotenv/config'
@@ -57,7 +58,7 @@ app.get('/add/:a/:b', (req, res) => {
 const PROTOCOL = "mongodb+srv";
 const DB_USERNAME = process.env.DB_USERNAME;
 const DB_PASSWORD = process.env.DB_PASSWORD;
-const HOST = "fsejuanong.vyxum.mongodb.net";
+const HOST = "fse-a4-cluster.i1u1n.mongodb.net";
 const DB_NAME= "myFirstDatabase";
 const DB_QUERY= "retryWrites=true&w=majority";
 const connectionString = `${PROTOCOL}://${DB_USERNAME}:${DB_PASSWORD}@${HOST}/${DB_NAME}?${DB_QUERY}`;
@@ -69,6 +70,7 @@ const likeController = LikeController.getInstance(app);
 const bookmarkController = BookmarkController.getInstance(app);
 const followController = FollowController.getInstance(app);
 const messageController = MessageController.getInstance(app);
+const dislikeController = DislikeController.getInstance(app);
 AuthenticationController(app);
 /**
  * Start a server listening at port 4000 locally

@@ -46,7 +46,7 @@ app.use(session(sess));
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    // delete this?
+    // add netlify url?
     origin: 'http://localhost:3000'
 }));
 app.get('/hello', (req, res) =>

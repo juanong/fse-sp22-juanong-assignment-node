@@ -19,8 +19,10 @@ import DislikeDao from "../daos/DislikeDao";
  *     <li>PUT /api/tuits/:tid/reset to set all tuit stats to 0 </li>
  *     <li>GET /api/users/:uid/likes/:tid to retrieve a like instance of a specific user and tuit
  * </ul>
- * @property {BookmarkDao} likeDao Singleton DAO implementing likes CRUD operations
- * @property {BookmarkController} likeController Singleton controller implementing RESTful web service API
+ * @property {LikeDao} likeDao Singleton DAO implementing likes CRUD operations
+ * @property {LikeController} likeController Singleton controller implementing RESTful web service API
+ * @property {TuitDao} tuitDao Singleton DAO implementing tuit CRUD operations
+ * @property {DislikeDao} dislikeDao Singleton DAO implementing dislikes CRUD operations
  */
 export default class LikeController implements LikeControllerI {
     private static likeDao: LikeDao = LikeDao.getInstance();
@@ -91,7 +93,7 @@ export default class LikeController implements LikeControllerI {
             .then(status => res.send(status));
     }
     /**
-     * Adjusts the relationship between a like and dislike for a particular tuit
+     * Adjusts the relationship between likes and dislikes for a particular tuit
      * @param {Request} req The request from the client, including the path parameters uid and tid representing
      * the user who has liked or disliked a tuit and the related tuit
      * @param {Response} res The response to the client, including status on whether the toggle was successful

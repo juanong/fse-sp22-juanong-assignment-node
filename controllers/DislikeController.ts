@@ -1,9 +1,11 @@
+/**
+ * @file Controller RESTful web service API for dislikes resource
+ */
 import {Request, Response, Express} from "express";
 import DislikeDao from "../daos/DislikeDao";
 import DislikeControllerI from "../interfaces/DislikeControllerI";
 import TuitDao from "../daos/TuitDao";
 import LikeDao from "../daos/LikeDao";
-import LikeController from "./LikeController";
 
 export default class DislikeController implements DislikeControllerI {
     private static dislikeDao: DislikeDao = DislikeDao.getInstance();

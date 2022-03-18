@@ -34,7 +34,12 @@ export default class LikeDao implements LikeDaoI {
      * @param uid {string} user primary key
      */
     findAllTuitsLikedByUser = (uid: string): Promise<Like[]> =>
-        LikeModel.find({likedBy: uid}).populate("tuit").exec();
+        LikeModel.find({likedBy: uid}).populate({
+            path: "tuit",
+            populate: {
+                path: "postedBy"
+            }
+        }).exec();
     /**
      * Calls on LikeModel to create a new Like instance
      * @param tid {string} primary key of tuit being liked

@@ -18,6 +18,7 @@ export default class DislikeController implements DislikeControllerI {
             app.post("/api/users/:uid/dislikes/:tid", DislikeController.dislikeController.userDislikesTuit);
             app.delete("/api/users/:uid/undislikes/:tid", DislikeController.dislikeController.userUndislikesTuit);
             app.get("/api/users/:uid/dislikes", DislikeController.dislikeController.findAllTuitsDislikedByUser);
+            app.get("/api/users/:uid/dislikes/:tid", DislikeController.dislikeController.findUserDislikesTuit);
         }
         return DislikeController.dislikeController;
     }
@@ -65,7 +66,18 @@ export default class DislikeController implements DislikeControllerI {
     }
 
     findAllTuitsDislikedByUser(req: Request, res: Response) {
-        return  DislikeController.dislikeDao.findAllTuitsDislikedByUser(req.params.uid)
+        return DislikeController.dislikeDao.findAllTuitsDislikedByUser(req.params.uid)
             .then(dislikes => res.json(dislikes));
+    }
+
+    findUserDislikesTuit(req: Request, res: Response) {
+        const uid = req.params.uid;
+        const tid = req.params.tid;
+        // @ts-ignore
+        const profile = req.session['profile'];
+        const userId = uid === "me" && profile ?
+            profile._id : uid;
+        return DislikeController.dislikeDao.findUserDislikesTuit(userId, tid)
+            .then(dislike => res.json(dislike));
     }
 }

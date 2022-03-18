@@ -1,19 +1,19 @@
 /**
- * @file Implements a DAO that manages all bookmark related data
+ * @file Implements a DAO that manages all likes between a user and a tuit
  */
 import Like from "../models/likes/Like";
 import LikeDaoI from "../interfaces/LikeDaoI";
 import LikeModel from "../mongoose/likes/LikeModel";
 
 /**
- * @class BookmarkDao implements a data access object that manages all bookmark data
- * @property {BookmarkDao} bookmarkDao is a private instance of Bookmark DAO using the singleton pattern
+ * @class LikeDao implements a data access object that manages all likes data
+ * @property {LikeDao} likeDao is a private instance of Like DAO using the singleton pattern
  */
 export default class LikeDao implements LikeDaoI {
     private static likeDao: LikeDao | null = null;
     /**
      * Creates a single instance of the LikeDao
-     * @returns MessageDao
+     * @returns LikeDao
      */
     public static getInstance = (): LikeDao => {
         if (LikeDao.likeDao === null) {
@@ -50,4 +50,19 @@ export default class LikeDao implements LikeDaoI {
      */
     userUnlikesTuit = async(tid: string, uid: string): Promise<any> =>
         LikeModel.deleteOne({tuit: tid, likedBy: uid});
+
+    /**
+     * Calls on LikeModel to find if a user has already liked a particular tuit
+     * @param uid {string} primary key of user who has liked the tuit
+     * @param tid {string} primary key of tuit that has been liked
+     */
+    findUserLikesTuit = async(uid: string, tid: string): Promise<any> =>
+        LikeModel.findOne({tuit: tid, likedBy: uid});
+
+    /**
+     * Calls on LikeModel to determine how many unique users have liked a particular tuit
+     * @param tid {string} primary key of tuit
+     */
+    countHowManyLikedTuit = async(tid: string): Promise<any> =>
+        LikeModel.count({tuit: tid});
 }

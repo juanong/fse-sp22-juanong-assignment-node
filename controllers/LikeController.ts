@@ -98,6 +98,8 @@ export default class LikeController implements LikeControllerI {
         try {
             const userAlreadyLikedTuit = await LikeController.likeDao
                 .findUserLikesTuit(userId, tid);
+            const userHasDislikedTuit = await LikeController.dislikeDao
+                .findUserDislikesTuit(userId, tid);
             const howManyLikedTuit = await LikeController.likeDao
                 .countHowManyLikedTuit(tid);
             const howManyDislikedTuit = await LikeController.dislikeDao
@@ -109,9 +111,11 @@ export default class LikeController implements LikeControllerI {
             } else {
                 await LikeController.likeDao.userLikesTuit(tid, userId);
                 tuit.stats.likes = howManyLikedTuit + 1;
-                // decrement dislikes, unlike the tuit
-                await LikeController.dislikeDao.userUndislikesTuit(tid, userId);
-                tuit.stats.dislikes = Math.max(howManyDislikedTuit - 1, 0);
+                if (userHasDislikedTuit) {
+                    // decrement dislikes, unlike the tuit
+                    await LikeController.dislikeDao.userUndislikesTuit(tid, userId);
+                    tuit.stats.dislikes = Math.max(howManyDislikedTuit - 1, 0);
+                }
             }
             await LikeController.tuitDao.updateLikes(tid, tuit.stats);
             res.sendStatus(200);

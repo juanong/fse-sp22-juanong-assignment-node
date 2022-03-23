@@ -46,9 +46,9 @@ app.use(session(sess));
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    // add netlify url?
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:3000', 'https://fse-sp22-juanong-a4.netlify.app']
 }));
+
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));
 

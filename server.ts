@@ -46,19 +46,18 @@ app.use(session(sess));
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    // add netlify url?
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:3000', 'https://fse-sp22-juanong-a4.netlify.app']
 }));
 
 // Trying this snippet to prevent CORS issues when using Heroku
-app.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Origin');
-    res.header('Access-Control-Allow-Methods',
-        'GET, POST, PUT, PATCH, DELETE, OPTIONS');
-    res.header('Access-Control-Allow-Credentials', 'true')
-    next();
-})
+// app.use(function (req, res, next) {
+//     res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+//     res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With, Origin');
+//     res.header('Access-Control-Allow-Methods',
+//         'GET, POST, PUT, PATCH, DELETE, OPTIONS');
+//     res.header('Access-Control-Allow-Credentials', 'true')
+//     next();
+// })
 
 app.get('/hello', (req, res) =>
     res.send('Hello World!'));

@@ -31,8 +31,8 @@ const app = express();
 let sess = {
     secret: process.env.SECRET,
     cookie: {
-        secure: false,
-        SameSite: "none"
+        secure: true,
+        sameSite: "none"
     }
 }
 

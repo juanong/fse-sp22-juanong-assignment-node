@@ -32,7 +32,7 @@ let sess = {
     secret: process.env.SECRET,
     cookie: {
         secure: false,
-        sameSite: "none"
+        SameSite: "none"
     }
 }
 

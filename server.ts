@@ -30,6 +30,7 @@ const session = require("express-session");
 const app = express();
 let sess = {
     secret: process.env.SECRET,
+    proxy: true,
     cookie: {
         secure: true,
         sameSite: 'none'

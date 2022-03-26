@@ -30,10 +30,8 @@ const session = require("express-session");
 const app = express();
 let sess = {
     secret: process.env.SECRET,
-    resave: true,
-    saveUninitialized: true,
     cookie: {
-        secure: true,
+        secure: false,
         sameSite: 'none'
     }
 }
